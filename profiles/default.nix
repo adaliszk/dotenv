@@ -1,0 +1,5 @@
+[
+  "essentials"
+  "applications"
+  "devtools"
+]
