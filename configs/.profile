@@ -1,0 +1,9 @@
+# Nix Profiles
+export PATH="$HOME/.nix-profile/bin:$PATH";
+export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+
+# Jetbrains Toolbox
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+# Proto Tools
+export PATH="$PATH:$HOME/.proto/shims:$HOME/.proto/bin"
