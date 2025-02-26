@@ -1,10 +1,6 @@
-# Configure and manage the environment and packages
+# Dotfiles and Package Management
 
 Just another personalized dotfiles and environment confguration repository.
-Contributions are welcomed, but keep in mind that drastically different
-direction should be discussed first, or perhaps you could fork your own path
-using my repository as the template.
-
 Generally speaking, the setup here are for web-based software engineers
 who use Kubernetes and Docker regurarly. Main IDE is the various JetBrains
 editors, while in the terminal having neovim for quick edits.
