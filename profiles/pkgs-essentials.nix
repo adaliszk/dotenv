@@ -10,6 +10,8 @@
   stow
   git
   git-lfs
+  openssh
+  rsync
   neovim
   kubectl
   k9s
