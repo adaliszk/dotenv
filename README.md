@@ -25,7 +25,7 @@ git clone https://github.com/adaliszk/dotenv
 To install the configuration files, use:
 
 ```bash
-stow -t . -d dotenv/configs
+cd dotenv && stow configs
 ```
 
 After that you can install the various profiles:
