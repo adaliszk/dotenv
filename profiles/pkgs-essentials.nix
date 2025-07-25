@@ -1,6 +1,7 @@
 { pkgs }: with pkgs;
 
 [
+  neofetch
   nushell
   nushellPlugins.query
   nushellPlugins.units
@@ -8,15 +9,13 @@
   nushellPlugins.highlight
   nufmt
   stow
+  tldr
   git
   git-lfs
   openssh
   rsync
-  neovim
-  kubectl
-  k9s
-  proto
-  moon
+  zip
+  unzip
   docker
   docker-buildx
   docker-sync

@@ -3,8 +3,6 @@
 [
   jetbrains-toolbox
   surrealist
-  alacritty
-  alacritty-theme
   nerd-fonts.noto
   nerd-fonts.hack
   nerd-fonts.tinos

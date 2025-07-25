@@ -1,5 +1,6 @@
 [
   "essentials"
+  "console-devtools"
+  "desktop-devtools"
   "applications"
-  "devtools"
 ]

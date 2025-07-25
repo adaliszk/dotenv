@@ -1,17 +1,16 @@
 # Dotfiles and Package Management
 
-Just another personalized dotfiles and environment confguration repository.
+Just another personalized dotfiles and environment configuration repository.
 Generally speaking, the setup here are for web-based software engineers
-who use Kubernetes and Docker regurarly. Main IDE is the various JetBrains
+who use Kubernetes and Docker regularly. Main IDE is the various JetBrains
 editors, while in the terminal having neovim for quick edits.
 
-## Pre-requities
+## Prerequisites
 
-While the profiles would install amost everything, there are a few system
+While the profiles would install almost everything, there are a few system
 packages that you do need to supply yourself:
 
 - Nix: https://nixos.org/download
-- Stow: https://www.gnu.org/software/stow/#download
 
 ## Usage
 
@@ -39,7 +38,8 @@ Note: If you want to use the local path, you can use: `./dotenv#essentials`
 ## Profiles
 
 - `essentials`: shell utilities and management tools
-- `devtools`: IDEs and their dependencies using a GUI
+- `console-devtools`: shell development tools
+- `desktop-devtools`: IDEs and their dependencies using a GUI
 - `applications`: everyday GUI applications
 
 ## Contributions
