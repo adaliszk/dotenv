@@ -9,4 +9,4 @@ export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 export PATH="$PATH:$HOME/.proto/shims:$HOME/.proto/bin"
 
 # Force Wayland for QT applications
-# export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=wayland
