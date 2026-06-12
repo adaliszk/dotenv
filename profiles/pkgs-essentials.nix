@@ -1,7 +1,7 @@
 { pkgs }: with pkgs;
 
 [
-  hyfetch
+  fastfetch
   nushell
   nufmt
   stow
