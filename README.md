@@ -18,7 +18,7 @@ While the nix profiles can use github directly, the configuration files
 needed to be cloned:
 
 ```bash
-git clone https://github.com/adaliszk/dotenv
+git clone https://github.com/adaliszk/system System
 ```
 
 To install the configuration files, use:
@@ -30,17 +30,8 @@ cd dotenv && stow configs
 After that you can install the various profiles:
 
 ```bash
-nix profile install github:adaliszk/dotenv#essentials
+nix profile install github:adaliszk/system#essentials
 ```
-
-Note: If you want to use the local path, you can use: `./dotenv#essentials`
-
-## Profiles
-
-- `essentials`: shell utilities and management tools
-- `console-devtools`: shell development tools
-- `desktop-devtools`: IDEs and their dependencies using a GUI
-- `applications`: everyday GUI applications
 
 ## Contributions
 
