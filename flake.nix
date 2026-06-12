@@ -1,5 +1,5 @@
 {
-  description = "System Profiles by AdaLiszk, btw";
+  description = "Nix Profiles by AdaLiszk, btw";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -13,8 +13,8 @@
           inherit system;
           config.allowUnfree = true;
         };
-        profiles = import ./profiles/default.nix;
-        importProfile = name: import (./profiles + "/pkgs-${name}.nix") { inherit pkgs; };
+        profiles = builtins.attrNames (builtins.readDir ./profiles);
+        importProfile = name: import (./profiles + "/${name}.nix") { inherit pkgs; };
         paths = builtins.listToAttrs (map (name: {
           inherit name;
           value = importProfile name;
@@ -28,7 +28,7 @@
           };
         }) profiles) // {
           everything = pkgs.buildEnv {
-            name = "full-env";
+            name = "default";
             paths = builtins.concatLists (builtins.attrValues profiles);
           };
         };
