@@ -8,4 +8,4 @@ $env.path ++= ["/nix/var/nix/profiles/default/bin"]
 $env.path ++= ["~/.local/share/JetBrains/Toolbox/scripts"]
 
 # Proto Tools
-$env.path ++= ["~/.proto/shims","~/.proto/bin"]
+$env.path ++= ["~/.proto/shims", "~/.proto/bin"]
