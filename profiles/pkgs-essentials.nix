@@ -2,6 +2,7 @@
 
 [
   fastfetch
+  alacritty
   nushell
   nufmt
   stow
