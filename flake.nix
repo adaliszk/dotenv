@@ -1,63 +1,57 @@
 {
-  description = "Nix System by AdaLiszk, btw";
+  description = "System Profiles & Configurations by AdaLiszk, btw";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flakeUtils.url = "github:numtide/flake-utils";
+    systemManager = {
+      url = "github:numtide/system-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      flake-utils,
+      systemManager,
+      flakeUtils,
+      ...
     }:
-    flake-utils.lib.eachDefaultSystem (
+    flakeUtils.lib.eachDefaultSystem (
       system:
       let
+        lib = nixpkgs.lib;
         pkgs = import nixpkgs {
-          inherit system;
           config.allowUnfree = true;
+          inherit system;
         };
-        devTools = with pkgs; [
-          git
-          dprint
-          nixfmt
-          nufmt
+        systemNames = map (lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
+        profileNames = map (lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./profiles));
+        importNix = dir: name: import (dir + "/${name}.nix") { inherit pkgs system systemManager; };
+        gitHooksDir = pkgs.linkFarm "git-hooks" [
+          {
+            name = "pre-commit";
+            path = pkgs.writeShellScript "pre-commit" ''
+              dprint fmt --staged
+            '';
+          }
         ];
-        profiles = builtins.attrNames (builtins.readDir ./profiles);
-        importProfile = name: import (./profiles + "/${name}.nix") { inherit pkgs; };
-        paths = builtins.listToAttrs (
-          map (name: {
-            inherit name;
-            value = importProfile name;
-          }) profiles
-        );
       in
       {
-        packages =
-          builtins.listToAttrs (
-            map (name: {
-              inherit name;
-              value = pkgs.buildEnv {
-                name = name;
-                paths = paths.${name};
-              };
-            }) profiles
-          )
-          // {
-            devTools = pkgs.buildEnv {
-              name = "devtools";
-              paths = devTools;
-            };
-          };
-        defaultPackage = self.packages.devTools;
+        systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
+        packages = lib.genAttrs profileNames (importNix ./profiles);
+        defaultPackage = self.packages.essentials;
 
         devShells.default = pkgs.mkShell {
-          packages = devTools;
           shellHook = ''
-            dprint fmt
+            git config --local core.hooksPath ${gitHooksDir}
           '';
+          packages = with pkgs; [
+            dprint
+            nixfmt
+            nufmt
+          ];
         };
       }
     );

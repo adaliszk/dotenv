@@ -1,18 +1,24 @@
-{ pkgs }: with pkgs;
+{
+  pkgs,
+  systemManager,
+  system,
+  ...
+}:
 
-[
-  stow
-  git
-  git-lfs
-  tldr
-  fastfetch
-  zoxide
-  nushell
-  starship
-  nerd-fonts.fira-code
-  nerd-fonts.fira-mono
-  nerd-fonts.jetbrains-mono
-  nerd-fonts.commit-mono
-  nerd-fonts.space-mono
-  rsync
-]
+let
+  systemSwitch = pkgs.writeShellApplication {
+    name = "system-switch";
+    runtimeInputs = [ systemManager.packages.${system}.default ];
+    text = ''
+      PRESET="''${1:?Usage: system-switch <flake-ref>}"
+      system-manager switch --sudo --flake "$PRESET"
+    '';
+  };
+in
+pkgs.buildEnv {
+  name = "essentials";
+  paths = with pkgs; [
+    systemManager.packages.${system}.default
+    systemSwitch
+  ];
+}
