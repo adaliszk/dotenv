@@ -29,10 +29,10 @@ let
     '';
 
     environment.etc."pam.d/greetd".text = ''
-      auth      include   system-login
-      account   include   system-login
-      session   include   system-login
-      password  include   system-login
+      auth      include   system-local-login
+      account   include   system-local-login
+      session   include   system-local-login
+      password  include   system-local-login
     '';
 
     systemd.services.greetd = {
