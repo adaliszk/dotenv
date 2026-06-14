@@ -6,6 +6,7 @@ pkgs.buildEnv {
     nushell
     starship
     zoxide
+    ripgrep
     yazi
   ];
 }
