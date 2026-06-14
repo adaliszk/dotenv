@@ -14,6 +14,9 @@ let
       "nix-command"
       "flakes"
     ];
+    environment.systemPackages = with pkgs; [
+      openssh
+    ];
   };
 in
 {

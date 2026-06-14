@@ -11,6 +11,11 @@ let
     environment.systemPackages = with pkgs; [
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
       foot
+      nerd-fonts.fira-code
+      nerd-fonts.fira-mono
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.commit-mono
+      nerd-fonts.space-mono
     ];
     environment.etc."greetd/config.toml".text = ''
       [terminal]
