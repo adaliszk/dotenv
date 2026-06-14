@@ -1,11 +1,11 @@
 {
   pkgs,
-  system,
   systemManager,
+  system,
   ...
-}:
+}@args:
 
-{
+rec {
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
@@ -19,8 +19,8 @@
 
   system = systemManager.lib.makeSystemConfig {
     modules = [
-      ./root.nix
-      ./minimal.nix
+      (import ./root.nix args).config
+      config
     ];
   };
 }

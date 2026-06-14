@@ -1,9 +1,9 @@
 {
   pkgs,
-  system,
   systemManager,
+  system,
   ...
-}:
+}@args:
 
 let
   greetCommand = pkgs.writeShellScript "tuigreet" ''
@@ -13,7 +13,7 @@ let
       --cmd ${pkgs.hyprland}/bin/start-hyprland
   '';
 in
-{
+rec {
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
@@ -42,9 +42,9 @@ in
 
   system = systemManager.lib.makeSystemConfig {
     modules = [
-      ./root.nix
-      ./minimal.nix
-      ./hyprland.nix
+      (import ./root.nix args).config
+      (import ./minimal.nix args).config
+      config
     ];
   };
 }
