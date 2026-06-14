@@ -12,8 +12,6 @@ let
       --time \
       --cmd ${pkgs.hyprland}/bin/start-hyprland
   '';
-in
-rec {
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
@@ -39,11 +37,13 @@ rec {
       };
     };
   };
-
+in
+{
+  inherit config;
   system = systemManager.lib.makeSystemConfig {
     modules = [
-      # (import ./root.nix args).config
-      # (import ./minimal.nix args).config
+      (import ./root.nix args).config
+      (import ./minimal.nix args).config
       config
     ];
   };

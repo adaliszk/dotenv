@@ -5,7 +5,7 @@
   ...
 }@args:
 
-rec {
+let
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
@@ -16,7 +16,9 @@ rec {
       stow
     ];
   };
-
+in
+{
+  inherit config;
   system = systemManager.lib.makeSystemConfig {
     modules = [
       (import ./root.nix args).config
