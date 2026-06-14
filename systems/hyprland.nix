@@ -10,7 +10,8 @@ let
     ${pkgs.tuigreet}/bin/tuigreet \
       --remember \
       --time \
-      --cmd ${pkgs.hyprland}/bin/start-hyprland
+      --cmd ${pkgs.hyprland}/bin/start-hyprland \
+      &> /tmp/start-hyprland.log
   '';
   config = {
     nixpkgs.hostPlatform = system;
