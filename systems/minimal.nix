@@ -9,6 +9,7 @@ let
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
+      nushell
       git
       git-lfs
       fastfetch
