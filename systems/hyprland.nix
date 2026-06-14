@@ -28,12 +28,28 @@ let
         user = "greeter"
     '';
 
+    environment.etc."pam.d/greetd".text = ''
+      auth      include   system-login
+      account   include   system-login
+      session   include   system-login
+      password  include   system-login
+    '';
+
     systemd.services.greetd = {
       enable = true;
       wantedBy = [ "system-manager.target" ];
+      after = [
+        "systemd-user-sessions.service"
+        "getty@tty1.service"
+      ];
+      conflicts = [ "getty@tty1.service" ];
       serviceConfig = {
         ExecStart = "${pkgs.greetd}/bin/greetd";
         Restart = "always";
+        StandardInput = "tty";
+        TTYPath = "/dev/tty1";
+        TTYReset = true;
+        TTYVHangup = true;
       };
     };
   };
