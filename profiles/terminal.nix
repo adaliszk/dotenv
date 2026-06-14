@@ -7,6 +7,7 @@ pkgs.buildEnv {
     starship
     zoxide
     ripgrep
+    fd
     yazi
   ];
 }
