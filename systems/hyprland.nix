@@ -10,6 +10,7 @@ let
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
+      foot
     ];
     environment.etc."greetd/config.toml".text = ''
       [terminal]
