@@ -8,9 +8,7 @@
 let
   greetCommand = pkgs.writeShellScript "tuigreet" ''
     ${pkgs.tuigreet}/bin/tuigreet \
-      --remember \
-      --time \
-      --cmd ${pkgs.hyprland}/bin/start-hyprland \
+      --remember --time --cmd start-hyprland \
       &> /tmp/start-hyprland.log
   '';
   config = {
