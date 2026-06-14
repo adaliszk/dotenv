@@ -64,6 +64,15 @@ Profiles:
 - `adaliszk#agentdev`: wrap LLM-based development with fine-tune controls
 - `adaliszk#neovim`: customized neovim using Nix and Stow
 
+After installed the intended profiles, run the config update for setting up the user
+home configurations:
+
+```bash
+update-configs
+```
+
+This is also the command to be used for updating the system configs for updates.
+
 ## Contributions
 
 While the main purpose is to share my own setup, feel free to use it as your own

@@ -7,10 +7,5 @@ pkgs.buildEnv {
     starship
     zoxide
     yazi
-    yaziPlugins.starship
-    yaziPlugins.split-tabs
-    yaziPlugins.wl-clipboard
-    yaziPlugins.smart-paste
-    yaziPlugins.piper
   ];
 }

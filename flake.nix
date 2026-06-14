@@ -41,7 +41,9 @@
       in
       {
         systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
-        packages = profiles // { default = profiles.essentials; };
+        packages = profiles // {
+          default = profiles.essentials;
+        };
 
         devShells.default = pkgs.mkShell {
           shellHook = ''
