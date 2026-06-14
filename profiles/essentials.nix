@@ -14,11 +14,38 @@ let
       system-manager switch --sudo --flake "$PRESET"
     '';
   };
+  configUpdate = pkgs.writeShellApplication {
+    name = "config-update";
+    runtimeInputs = with pkgs; [
+      git
+      nix
+      jq
+      stow
+    ];
+    text = ''
+      set -euo pipefail
+      REPO="''${SYSTEM_REPO:-https://github.com/adaliszk/system}"
+      ROOT="''${SYSTEM_DIR:-$HOME/.system}"
+
+      echo "> Checking $ROOT for $REPO state"
+      git -C "$ROOT" rev-parse && git -C "$ROOT" pull --ff-only || git clone "$REPO" "$ROOT"
+
+      echo "> Extracting nix profile names"
+      mapfile -t PROFILES < <(nix profile list --json | jq -r '.elements | keys[]')
+
+      echo "> Stow configurations used"
+      for NAME in "''${PROFILES[@]}"; do
+        [ -d "$ROOT/configs/$NAME" ] || continue
+        stow -d "$ROOT/configs" -t "$HOME" -R "$NAME"
+      done
+    '';
+  };
 in
 pkgs.buildEnv {
   name = "essentials";
   paths = with pkgs; [
     systemManager.packages.${system}.default
     systemSwitch
+    configUpdate
   ];
 }

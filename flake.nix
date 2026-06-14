@@ -29,6 +29,7 @@
         systemNames = map (lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
         profileNames = map (lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./profiles));
         importNix = dir: name: import (dir + "/${name}.nix") { inherit pkgs system systemManager; };
+        profiles = lib.genAttrs profileNames (importNix ./profiles);
         gitHooksDir = pkgs.linkFarm "git-hooks" [
           {
             name = "pre-commit";
@@ -40,8 +41,7 @@
       in
       {
         systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
-        packages = lib.genAttrs profileNames (importNix ./profiles);
-        defaultPackage = self.packages.essentials;
+        packages = profiles // { default = profiles.essentials; };
 
         devShells.default = pkgs.mkShell {
           shellHook = ''
