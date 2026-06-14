@@ -28,7 +28,11 @@ let
       ROOT="''${SYSTEM_DIR:-$HOME/.system}"
 
       echo "> Checking $ROOT for $REPO state"
-      git -C "$ROOT" rev-parse && git -C "$ROOT" pull --ff-only || git clone "$REPO" "$ROOT"
+      if [ -d "$ROOT/.git" ]; then
+        git -C "$ROOT" pull --ff-only
+      else
+        git clone "$REPO" "$ROOT"
+      fi
 
       echo "> Extracting nix profile names"
       mapfile -t PROFILES < <(nix profile list --json | jq -r '.elements | keys[]')
