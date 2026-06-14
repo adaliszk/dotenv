@@ -16,7 +16,6 @@ let
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
-      hyprland
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
     ];
 

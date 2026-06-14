@@ -3,7 +3,6 @@
 pkgs.buildEnv {
   name = "hyprland";
   paths = with pkgs; [
-    hyprland
     hyprsunset
     hyprshutdown
     hyprlauncher
