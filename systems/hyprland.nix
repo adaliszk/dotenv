@@ -6,22 +6,16 @@
 }@args:
 
 let
-  greetCommand = pkgs.writeShellScript "tuigreet" ''
-    ${pkgs.tuigreet}/bin/tuigreet \
-      --remember --time --cmd start-hyprland \
-      &> /tmp/start-hyprland.log
-  '';
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
     ];
-
     environment.etc."greetd/config.toml".text = ''
       [terminal]
         vt = 1
       [default_session]
-        command = "${greetCommand}"
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd start-hyprland"
         user = "greeter"
     '';
   };
