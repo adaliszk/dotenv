@@ -42,8 +42,8 @@ rec {
 
   system = systemManager.lib.makeSystemConfig {
     modules = [
-      (import ./root.nix args).config
-      (import ./minimal.nix args).config
+      # (import ./root.nix args).config
+      # (import ./minimal.nix args).config
       config
     ];
   };

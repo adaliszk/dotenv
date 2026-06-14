@@ -1,5 +1,6 @@
 .idea
 .vscode
+result
 temp
 **/history.txt
 **/.DS_Store
