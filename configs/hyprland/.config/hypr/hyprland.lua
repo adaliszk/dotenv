@@ -27,7 +27,6 @@ end)
 
 local mainMod = "SUPER"
 
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("foot"))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
@@ -41,7 +40,7 @@ local keys = { left = "H", right = "L", up = "K", down = "J" }
 for dir, vim in pairs(keys) do
 	for _, key in ipairs({ dir, vim }) do
 		hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ direction = dir }))
-		hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.mov({ direction = dir }))
+		hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ direction = dir }))
 	end
 end
 
