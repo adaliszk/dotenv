@@ -26,6 +26,13 @@ let
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
     ];
     environment.etc."fonts/nix".source = "${fontEnv}/share/fonts";
+    environment.etc."fonts/conf.d/00-nix-fonts.conf".text = ''
+      <?xml version="1.0"?>
+      <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+      <fontconfig>
+        <dir>/etc/fonts/nix</dir>
+      </fontconfig>
+    '';
     environment.etc."fonts/conf.d/20-defaults.conf".text = ''
       <?xml version="1.0"?>
       <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
