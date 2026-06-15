@@ -17,7 +17,7 @@ let
       nerd-fonts.commit-mono
       nerd-fonts.arimo
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       noto-fonts-cjk-sans
       liberation_ttf
       liberation-sans-narrow
