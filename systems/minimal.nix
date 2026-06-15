@@ -16,6 +16,14 @@ let
       rsync
       stow
     ];
+    environment.etc."shells".text = ''
+      /bin/sh
+      /bin/bash
+      /usr/bin/sh
+      /usr/bin/bash
+      /usr/bin/systemd-home-fallback-shell
+      ${pkgs.nushell}
+    '';
   };
 in
 {
