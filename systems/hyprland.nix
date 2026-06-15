@@ -23,7 +23,7 @@ let
       liberation-sans-narrow
       inter
     ];
-    environment.etc."fonts/conf.d/50-default-fonts.conf".text = ''
+    environment.etc."fonts/conf.d/20-defaults.conf".text = ''
       <?xml version="1.0"?>
       <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
       <fontconfig>
