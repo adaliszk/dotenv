@@ -6,10 +6,9 @@
 }@args:
 
 let
-  config = {
-    nixpkgs.hostPlatform = system;
-    environment.systemPackages = with pkgs; [
-      tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
+  fontEnv = pkgs.buildEnv {
+    name = "system-fonts";
+    paths = with pkgs; [
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
       nerd-fonts.jetbrains-mono
@@ -20,6 +19,15 @@ let
       noto-fonts-cjk-sans
       inter
     ];
+  };
+in
+{
+  config = {
+    nixpkgs.hostPlatform = system;
+    environment.systemPackages = with pkgs; [
+      tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
+    ];
+    environment.etc."fonts/nix".source = "${fontEnv}/share/fonts";
     environment.etc."fonts/conf.d/20-defaults.conf".text = ''
       <?xml version="1.0"?>
       <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
@@ -37,9 +45,6 @@ let
         user = "greeter"
     '';
   };
-in
-{
-  inherit config;
   system = systemManager.lib.makeSystemConfig {
     modules = [
       (import ./root.nix args).config
