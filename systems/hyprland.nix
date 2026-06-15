@@ -10,7 +10,6 @@ let
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
       tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
-      foot
       nerd-fonts.fira-code
       nerd-fonts.fira-mono
       nerd-fonts.jetbrains-mono
@@ -19,8 +18,6 @@ let
       noto-fonts
       noto-fonts-color-emoji
       noto-fonts-cjk-sans
-      liberation_ttf
-      liberation-sans-narrow
       inter
     ];
     environment.etc."fonts/conf.d/20-defaults.conf".text = ''

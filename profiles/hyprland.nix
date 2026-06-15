@@ -10,5 +10,6 @@ pkgs.buildEnv {
     hyprlauncher
     hyprlock
     ironbar
+    foot
   ];
 }
