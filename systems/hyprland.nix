@@ -20,8 +20,6 @@ let
       inter
     ];
   };
-in
-{
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
@@ -45,6 +43,9 @@ in
         user = "greeter"
     '';
   };
+in
+{
+  inherit config;
   system = systemManager.lib.makeSystemConfig {
     modules = [
       (import ./root.nix args).config
