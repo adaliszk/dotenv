@@ -51,5 +51,6 @@ pkgs.buildEnv {
     systemManager.packages.${system}.default
     systemSwitch
     configUpdate
+    proto
   ];
 }
