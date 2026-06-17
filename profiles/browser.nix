@@ -3,28 +3,26 @@ with pkgs;
 
 let
   zenFox = wrapFirefox firefox-esr-unwrapped {
-    nixExtensions = [
-      (fetchFirefoxAddon {
-        name = "ublock-origin";
-        url = "https://github.com/gorhill/uBlock/releases/download/1.71.0/uBlock0_1.71.0.firefox.signed.xpi";
-        sha256 = lib.fakeSha256;
-      })
-      (fetchFirefoxAddon {
-        name = "dark-reader";
-        url = "https://github.com/darkreader/darkreader/releases/download/v4.9.127/darkreader-firefox.xpi";
-        sha256 = lib.fakeSha256;
-      })
-      (fetchFirefoxAddon {
-        name = "matte-theme";
-        url = "https://addons.mozilla.org/firefox/downloads/latest/matte-black-spring-green/latest.xpi";
-        sha256 = lib.fakeSha256;
-      })
-    ];
     extraPolicies = {
       DisableTelemetry = true;
+      ExtensionSettings = {
+        "uBlock0@raymondhill.net" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "addon@darkreader.org" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi";
+          installation_mode = "force_installed";
+        };
+        "{78a5c5f7-7289-43c2-b420-3197d7a7557c}" = {
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/matte-black-spring-green/latest.xpi";
+          installation_mode = "force_installed";
+        };
+      };
     };
     extraPrefs = ''
       lockPref("browser.startup.homepage", "about:blank");
+      lockPref("extensions.activeThemeID", "{78a5c5f7-7289-43c2-b420-3197d7a7557c}");
     '';
   };
 in
