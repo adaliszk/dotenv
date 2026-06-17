@@ -1,9 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, system, jetbrainsPlugins, ... }:
 
+let
+  phpstorm = jetbrainsPlugins.lib.${system}.buildIdeWithPlugins
+  pkgs.jetbrains "phpstorm" [
+    "net.codestats.plugin.atom.intellij"
+    "com.chylex.intellij.inspectionlens"
+    "com.clutcher.comments_highlighter"
+    "indent-rainbow.indent-rainbow"
+    "lermitage.intellij.extra.icons"
+    "deno"
+  ];
+in
 pkgs.buildEnv {
   name = "phpdev";
   paths = with pkgs; [
-    jetbrains.phpstorm
+    phpstorm
     php85
     php85Packages.composer
     phpstan

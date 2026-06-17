@@ -12,6 +12,10 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jetbrainsPlugins = {
+      url = "github:theCapypara/nix-jetbrains-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,8 +34,6 @@
           config.allowUnfree = true;
           inherit system;
         };
-        systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
-        profileNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./profiles));
         nixGLWrap = nixGL: pkg: pkgs.symlinkJoin {
           name = "${pkg.pname or pkg.name}-nixgl";
           paths = [ pkg ];
@@ -45,11 +47,16 @@
             done
           '';
         };
-        importNix = dir: name: import (dir + "/${name}.nix") { inherit pkgs system systemManager nixgl nixGLWrap; };
+        importNix = dir: name: import (dir + "/${name}.nix") {
+            inherit pkgs system systemManager nixGL nixGLWrap jetbrainsPlugins;
+        };
+        systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
+        systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
+        profileNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./profiles));
         profiles = pkgs.lib.genAttrs profileNames (importNix ./profiles);
       in
       {
-        systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
+        inherit systemConfigs;
         packages = profiles // { default = profiles.essentials; };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
