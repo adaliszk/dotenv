@@ -23,8 +23,9 @@ let
   config = {
     nixpkgs.hostPlatform = system;
     environment.systemPackages = with pkgs; [
-      tuigreet # FUTURE: Switch when https://github.com/hyprwm/hyprlock/pull/731
+      tuigreet # FUTURE: Switch after https://github.com/hyprwm/hyprlock/pull/731 merged
     ];
+    # FUTURE: Use /usr after https://github.com/numtide/system-manager/issues/301 resolved
     environment.etc."fonts/nix".source = "${fontEnv}/share/fonts";
     environment.etc."fonts/conf.d/00-nix-fonts.conf".text = ''
       <?xml version="1.0"?>
