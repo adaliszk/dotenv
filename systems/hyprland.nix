@@ -46,7 +46,7 @@ let
       [terminal]
         vt = 1
       [default_session]
-        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd start-hyprland"
+        command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --cmd 'uwsm start hyprland'"
         user = "greeter"
     '';
   };

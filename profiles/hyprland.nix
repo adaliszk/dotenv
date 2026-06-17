@@ -3,12 +3,15 @@
 pkgs.buildEnv {
   name = "hyprland";
   paths = with pkgs; [
+    # hyprland
     hyprpaper
     hypridle
     hyprsunset
     hyprshutdown
-    hyprlauncher
     hyprlock
+    # hyprlauncher
+    hyprpwcenter
+    hyprcursor
     ironbar
     foot
   ];
