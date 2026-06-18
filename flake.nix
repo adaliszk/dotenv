@@ -52,7 +52,7 @@
             inherit pkgs system systemManager nixGL nixGLWrap jetbrainsPlugins;
         };
         systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
-        systemConfigs = lib.genAttrs systemNames (name: (importNix ./systems name).system);
+        systemConfigs = pkgs.lib.genAttrs systemNames (name: (importNix ./systems name).system);
         profileNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./profiles));
         profiles = pkgs.lib.genAttrs profileNames (importNix ./profiles);
       in
