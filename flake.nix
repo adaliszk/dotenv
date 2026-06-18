@@ -25,6 +25,7 @@
       systemManager,
       flakeUtils,
       nixGL,
+      jetbrainsPlugins,
       ...
     }:
     flakeUtils.lib.eachDefaultSystem (
