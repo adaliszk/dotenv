@@ -9,10 +9,7 @@ let
   systemSwitch = pkgs.writeShellApplication {
     name = "system-switch";
     runtimeInputs = [ systemManager.packages.${system}.default ];
-    text = ''
-      PRESET="''${1:?Usage: system-switch <flake-ref>}"
-      system-manager switch --sudo --flake "$PRESET"
-    '';
+    text = ''system-manager switch --sudo --flake "$@"'';
   };
   configUpdate = pkgs.writeShellApplication {
     name = "config-update";
