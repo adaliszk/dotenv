@@ -8,7 +8,7 @@
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixGL = {
+    nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -24,7 +24,7 @@
       nixpkgs,
       systemManager,
       flakeUtils,
-      nixGL,
+      nixgl,
       jetbrainsPlugins,
       ...
     }:
@@ -35,7 +35,7 @@
           config.allowUnfree = true;
           inherit system;
         };
-        nixGLWrap = nixGL: pkg: pkgs.symlinkJoin {
+        nixglWrap = nixgl: pkg: pkgs.symlinkJoin {
           name = "${pkg.pname or pkg.name}-nixgl";
           paths = [ pkg ];
           nativeBuildInputs = [ pkgs.makeWrapper ];
@@ -43,13 +43,13 @@
             for bin in $out/bin/*; do
               if [ -L "$bin" ]; then
                 tgt=$(readlink -f "$bin"); rm "$bin"
-                makeWrapper ${nixGL}/bin/nixGL "$bin" --add-flags "$tgt"
+                makeWrapper ${nixgl}/bin/nixGL "$bin" --add-flags "$tgt"
               fi
             done
           '';
         };
         importNix = dir: name: import (dir + "/${name}.nix") {
-            inherit pkgs system systemManager nixGL nixGLWrap jetbrainsPlugins;
+            inherit pkgs system systemManager nixgl nixglWrap jetbrainsPlugins;
         };
         systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
         systems = pkgs.lib.genAttrs systemNames (name: (importNix ./systems name).system);
