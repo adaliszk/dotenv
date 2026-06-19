@@ -1,8 +1,11 @@
-{ pkgs, system, jetbrainsPlugins, ... }:
+{
+  pkgs,
+  jetbrainsPlugins,
+  ...
+}:
 
 let
-  idea = jetbrainsPlugins.lib.${system}.buildIdeWithPlugins
-  pkgs.jetbrains "idea" [
+  idea = jetbrainsPlugins.lib.buildIdeWithPlugins pkgs "idea" [
     "net.codestats.plugin.atom.intellij"
     "com.chylex.intellij.inspectionlens"
     "com.clutcher.comments_highlighter"

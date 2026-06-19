@@ -1,8 +1,11 @@
-{ pkgs, system, jetbrainsPlugins, ... }:
+{
+  pkgs,
+  jetbrainsPlugins,
+  ...
+}:
 
 let
-  phpstorm = jetbrainsPlugins.lib.${system}.buildIdeWithPlugins
-  pkgs.jetbrains "phpstorm" [
+  phpstorm = jetbrainsPlugins.lib.buildIdeWithPlugins pkgs "phpstorm" [
     "net.codestats.plugin.atom.intellij"
     "com.chylex.intellij.inspectionlens"
     "com.clutcher.comments_highlighter"
