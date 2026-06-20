@@ -1,0 +1,17 @@
+position = "top"
+height = 32
+anchor_to_edges = true
+
+start = [
+    { type = "workspaces", all_monitors = true },
+]
+
+center = [
+    { type = "focused", show_icon = true, show_title = true, truncate = { mode = "end", length = 80 } },
+]
+
+end = [
+    { type = "sys_info", interval = { cpu = 2, memory = 5 }, format = ["{cpu_percent}%", "{cpu_frequency}GHz", "@{memory_used}MB"] },
+    { type = "tray" },
+    { type = "clock", format = "%y.%m.%d %H:%M" },
+]

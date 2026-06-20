@@ -1,0 +1,27 @@
+* {
+    font-family: "CommitMono Nerd Font", sans-serif;
+    font-size: 13px;
+}
+
+#bar {
+    background-color: transparent;
+    color: #e0e0e0;
+    margin: 10px 10px 0 10px;
+}
+
+.workspaces .item {
+    color: #6c7086;
+    padding: 0 8px;
+}
+
+.workspaces .item.focused {
+    color: #89b4fa;
+    background-color: #313244;
+    border-radius: 4px;
+}
+
+.focused { color: #a6adc8; padding: 0 10px; }
+.clock   { color: #cdd6f4; }
+.sys-info { color: #94e2d5; padding: 0 6px; }
+.volume  { color: #f9e2af; padding: 0 8px; }
+.tray    { padding: 0 6px; }
