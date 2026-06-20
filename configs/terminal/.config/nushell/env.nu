@@ -9,3 +9,8 @@ $env.path ++= ["~/.local/share/JetBrains/Toolbox/scripts"]
 
 # Proto Tools
 $env.path ++= ["~/.proto/shims", "~/.proto/bin"]
+
+# Rendering Configs
+$env.QT_QPA_PLATFORM = "wayland"
+$env.QT_QUICK_BACKEND = "software"
+$env.QSG_RHI_BACKEND = "vulkan"
