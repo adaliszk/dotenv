@@ -21,7 +21,7 @@ focused around running the kernel and absolutely necessary services.
 To kick off the global Nix configuration, run:
 
 ```bash
-sudo nix profile add adaliszk
+sudo nix profile add adaliszk#essentials
 ```
 
 After these essentials are installed, you can use `system-manager` to switch between
@@ -39,6 +39,23 @@ Systems:
 - `adaliszk#minimal`: minimum services and packages for protection and utilities
 - `adaliszk#k3s`: kubernetes node using Rancher's K3s with network-based configuration
 - `adaliszk#hyprland`: core system-level engine for using Hyprland desktop environment
+
+## System Packages with GUI
+
+While it would be nice to have everything under Nix, there are some system-level workloads that
+is way more struggle than it needs to be. For these, it is better to install a few packages locally:
+
+```bash
+pacman -Syu greetd hyprland
+
+# Audio Systems
+pacman -Syu pipewire pipewire-pulse pipewire-audio wireplumber
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+
+# Screen Sharing
+pacman -Syu xdg-desktop-portal xdg-desktop-portal-hyprland rtkit
+systemctl --user enable --now xdg-desktop-portal xdg-desktop-portal-hyprland
+```
 
 ## Customization
 

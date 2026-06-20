@@ -3,9 +3,9 @@
 -------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({ output = "", mode = "preferred", position = "auto", scale = "auto" })
-hl.monitor({ output = "DP-1",  mode = "preferred", position = "auto-left",  scale = "auto" })
+hl.monitor({ output = "",  mode = "preferred", position = "0x0",  scale = "auto" })
 hl.monitor({ output = "eDP-1", mode = "preferred", position = "auto-right", scale = "auto" })
+-- ^ Docked Monitors always on the LEFT of the Laptop screen.
 
 -------------------
 ---- AUTOSTART ----
