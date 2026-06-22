@@ -95,9 +95,11 @@
                   name=$(basename "$skill")
                   git -C "$tmp" subtree split --prefix="skills/$name" -b "split-$name"
                   if [ -d "skills/$name" ]; then
-                    git subtree pull --prefix="skills/$name" "$tmp" "split-$name" --squash
+                    git subtree pull --prefix="skills/$name" "$tmp" "split-$name" --squash \
+                      -m "chore(skills): update $name"
                   else
-                    git subtree add  --prefix="skills/$name" "$tmp" "split-$name" --squash
+                    git subtree add  --prefix="skills/$name" "$tmp" "split-$name" --squash \
+                      -m "feat(skills): add $name"
                   fi
                 done
 
