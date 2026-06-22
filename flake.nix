@@ -101,6 +101,7 @@
                     git subtree add  --prefix="skills/$name" "$tmp" "split-$name" --squash \
                       -m "feat(skills): add $name"
                   fi
+                  cp "$tmp"/LICENSE* "skills/$name/" 2>/dev/null || true
                 done
 
                 rm -rf "$tmp"
