@@ -85,27 +85,28 @@
                 [caveman]="https://github.com/JuliusBrussee/caveman main"
                 [ponytail]="https://github.com/DietrichGebert/ponytail main"
               )
-              for entry in "''${REPOS[@]}"; do
-                read -r url branch <<< "$entry"
-                tmp=$(mktemp -d)
-                git clone --depth 1 -b "$branch" "$url" "$tmp"
 
-                for skill in "$tmp"/skills/*/; do
-                  [ -d "$skill" ] || continue
-                  name=$(basename "$skill")
-                  git -C "$tmp" subtree split --prefix="skills/$name" -b "split-$name"
-                  if [ -d "skills/$name" ]; then
-                    git subtree pull --prefix="skills/$name" "$tmp" "split-$name" --squash \
-                      -m "chore(skills): update $name"
-                  else
-                    git subtree add  --prefix="skills/$name" "$tmp" "split-$name" --squash \
-                      -m "feat(skills): add $name"
-                  fi
-                  cp "$tmp"/LICENSE* "skills/$name/" 2>/dev/null || true
-                done
-
-                rm -rf "$tmp"
+              mkdir -p vendor
+              for name in "''${!REPOS[@]}"; do
+                read -r url branch <<< "''${REPOS[$name]}"
+                path="vendor/$name"
+                if [ -d "$path" ]; then
+                  git submodule update --remote "$path"
+                  git commit -m "chore(skills): update $name" "$path" || true
+                else
+                  git submodule add -b "$branch" "$url" "$path"
+                  git commit -m "feat(skills): add $name" .gitmodules "$path"
+                fi
               done
+
+              mkdir -p skills
+              find skills -maxdepth 1 -type l -delete
+              for d in vendor/*/skills/*/; do
+                [ -d "$d" ] || continue
+                ln -sfn "../$d" "skills/$(basename "$d")"
+              done
+              git add skills
+              git commit -m "chore(skills): relink" || true
             '')
           ];
         };
