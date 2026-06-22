@@ -3,23 +3,19 @@ height = 32
 anchor_to_edges = true
 
 start = [
-    { type = "workspaces", all_monitors = true },
-    { type = "focused", show_icon = true, show_title = true, truncate = { mode = "end", length = 60 } },
+  { type = "workspaces", all_monitors = true },
+  { type = "focused", show_icon = true, show_title = true, truncate = { mode = "end", length = 60 } },
 ]
 
 center = [
-    # Nothing
-] 
+  # Nothing
+]
 
 end = [
-    { type = "battery", show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'" },    
-    { type = "sys_info", interval = { cpu = 3, memory = 5 }, format = [
-      "{cpu_percent: <3.2}%"
-      ,"{cpu_frequency}GHz"
-      ,"{memory_used: <3.2}GB"
-      # ,"{net_up: <3.2}Mbps",
-      # ,"{net_down: <3.2}Mbps"
-    ]},
-    { type = "tray" },
-    { type = "clock", format = "%y.%m.%d %H:%M" },
+  { type = "battery", show_if = "ls /sys/class/power_supply/ | grep --quiet '^BAT'" },
+  { type = "sys_info", interval = { cpu = 3, memory = 5 }, format = ["{cpu_percent: <3.2}%", "{cpu_frequency}GHz", "{memory_used: <3.2}GB" # ,"{net_up: <3.2}Mbps"
+    # ,"{net_down: <3.2}Mbps"
+  ] },
+  { type = "tray" },
+  { type = "clock", format = "%y.%m.%d %H:%M" },
 ]
