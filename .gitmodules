@@ -2,3 +2,7 @@
 	path = vendor/ponytail
 	url = https://github.com/DietrichGebert/ponytail
 	branch = main
+[submodule "vendor/caveman"]
+	path = vendor/caveman
+	url = https://github.com/JuliusBrussee/caveman
+	branch = main
