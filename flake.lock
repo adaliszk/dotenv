@@ -122,11 +122,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1781341546,
-        "narHash": "sha256-17btxePnVyGjeYlQ6C6Jvc/X9Rn4NfxhQypx0eYwzHk=",
+        "lastModified": 1781977476,
+        "narHash": "sha256-KQYpaKtE5d5ubjxJsz+PmzhKE+jutoJyaF8yjYRDlYI=",
         "owner": "theCapypara",
         "repo": "nix-jetbrains-plugins",
-        "rev": "bae5228a91aeb509e5e3053f9274189f900252dc",
+        "rev": "7e94828396922aa446f0c6799942350257064a6f",
         "type": "github"
       },
       "original": {
