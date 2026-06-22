@@ -105,8 +105,6 @@
                 [ -d "$d" ] || continue
                 ln -sfn "../$d" "skills/$(basename "$d")"
               done
-              git add skills
-              git commit -m "chore(skills): relink" || true
             '')
           ];
         };
