@@ -79,6 +79,31 @@
             dprint
             nixfmt
             nufmt
+            (pkgs.writeShellScriptBin "skills-update" ''
+              set -euo pipefail
+              declare -A REPOS=(
+                [caveman]="https://github.com/JuliusBrussee/caveman main"
+                [ponytail]="https://github.com/DietrichGebert/ponytail main"
+              )
+              for entry in "''${REPOS[@]}"; do
+                read -r url branch <<< "$entry"
+                tmp=$(mktemp -d)
+                git clone --depth 1 -b "$branch" "$url" "$tmp"
+
+                for skill in "$tmp"/skills/*/; do
+                  [ -d "$skill" ] || continue
+                  name=$(basename "$skill")
+                  git -C "$tmp" subtree split --prefix="skills/$name" -b "split-$name"
+                  if [ -d "skills/$name" ]; then
+                    git subtree pull --prefix="skills/$name" "$tmp" "split-$name" --squash
+                  else
+                    git subtree add  --prefix="skills/$name" "$tmp" "split-$name" --squash
+                  fi
+                done
+
+                rm -rf "$tmp"
+              done
+            '')
           ];
         };
       }
