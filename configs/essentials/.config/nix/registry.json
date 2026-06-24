@@ -1,0 +1,15 @@
+{
+  "flakes": [
+    {
+      "from": {
+        "id": "adliszk",
+        "type": "indirect"
+      },
+      "to": {
+        "path": "/home/adaliszk/dotenv",
+        "type": "path"
+      }
+    }
+  ],
+  "version": 2
+}
