@@ -1,7 +1,10 @@
+# Environment and Editors
 .idea
 .vscode
-result
-temp
-**/history.txt
 **/.DS_Store
 **/*.iml
+
+# Artifacts
+**/build
+**/result
+**/temp
