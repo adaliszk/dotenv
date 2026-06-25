@@ -34,6 +34,9 @@
         pkgs = import nixpkgs {
           config.allowUnfree = true;
           inherit system;
+          overlays = [
+            (import ./nixpkgs/lan-mouse.nix)
+          ];
         };
         nixglWrap =
           nixgl: pkg:
@@ -79,6 +82,7 @@
             dprint
             nixfmt
             nufmt
+            shfmt
           ];
         };
       }

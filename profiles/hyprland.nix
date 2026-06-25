@@ -3,6 +3,7 @@
 pkgs.buildEnv {
   name = "hyprland";
   paths = with pkgs; [
+    lan-mouse
     # hyprland
     hyprpaper
     hypridle

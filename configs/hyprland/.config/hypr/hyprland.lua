@@ -19,6 +19,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("uwsm app -- hyprpaper")
   hl.exec_cmd("uwsm app -- hyprsunset")
   hl.exec_cmd("uwsm app -- ironbar")
+  hl.exec_cmd("uwsm app -- lan-mouse daemon")
 end)
 
 ---------------------
