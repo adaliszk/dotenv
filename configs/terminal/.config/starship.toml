@@ -1,0 +1,5 @@
+[package]
+version_format = "${raw}"
+
+[aws]
+disabled = true
