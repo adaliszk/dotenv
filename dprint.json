@@ -1,20 +1,16 @@
 {
-  "exec": {
-    "commands": [{
-      "command": "nixfmt -",
-      "exts": ["nix"]
-    }, {
-      "command": "nufmt --stdin",
-      "exts": ["nu"]
-    }]
-  },
-  "excludes": [
-    "configs/.config/JetBrains"
-  ],
-  "plugins": [
-    "https://plugins.dprint.dev/markdown-0.22.1.wasm",
-    "https://plugins.dprint.dev/toml-0.7.0.wasm",
-    "https://plugins.dprint.dev/exec-0.6.2.json@df98f54ffd3092b8a841aedd6d098a2651f16d0a796a40535774f1a8b4b9d463",
-    "https://plugins.dprint.dev/json-0.21.3.wasm"
-  ]
+    "json": { "indentWidth": 4, "newLineKind": "lf", "preferSingleLine": false },
+    "exec": {
+        "commands": [
+            { "command": "nixfmt -", "exts": ["nix"] },
+            { "command": "nufmt --stdin", "exts": ["nu"] },
+            { "command": "shfmt -i 4 -ln bash", "exts": ["sh"] }
+        ]
+    },
+    "plugins": [
+        "https://plugins.dprint.dev/markdown-0.22.1.wasm",
+        "https://plugins.dprint.dev/toml-0.7.0.wasm",
+        "https://plugins.dprint.dev/exec-0.6.2.json@df98f54ffd3092b8a841aedd6d098a2651f16d0a796a40535774f1a8b4b9d463",
+        "https://plugins.dprint.dev/json-0.21.3.wasm"
+    ]
 }

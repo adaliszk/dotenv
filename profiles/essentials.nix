@@ -37,13 +37,13 @@ let
       echo "> Stow configurations"
       for NAME in "''${PROFILES[@]}"; do
         [ -d "$ROOT/configs/$NAME" ] || continue
-        stow -d "$ROOT/configs" -t "$HOME" -R "$NAME"
+        stow --no-folding --defer="." -d "$ROOT/configs" -t "$HOME" -R "$NAME"
       done
 
       echo "> Stow skills"
       for TOOL in .claude/skills .agents/skills; do
         mkdir -p "$HOME/$TOOL"
-        stow -d "$ROOT" -t "$HOME/$TOOL" -R skills
+        stow --no-folding --defer="." -d "$ROOT" -t "$HOME/$TOOL" -R skills
       done
     '';
   };
