@@ -39,12 +39,6 @@ let
         [ -d "$ROOT/configs/$NAME" ] || continue
         stow --no-folding --defer="." -d "$ROOT/configs" -t "$HOME" -R "$NAME"
       done
-
-      echo "> Stow skills"
-      for TOOL in .claude/skills .agents/skills; do
-        mkdir -p "$HOME/$TOOL"
-        stow --no-folding --defer="." -d "$ROOT" -t "$HOME/$TOOL" -R skills
-      done
     '';
   };
 in
