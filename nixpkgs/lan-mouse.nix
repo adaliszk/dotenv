@@ -5,12 +5,15 @@ final: prev: {
       owner = "feschber";
       repo = "lan-mouse";
       tag = "v${version}";
-      hash = final.lib.fakeHash;
+      hash = "sha256-6EqA9WfiukOymUT4FkNdMvzmFKByW0LLoI/9sv4TzBU=";
     };
     cargoDeps = final.rustPlatform.fetchCargoVendor {
       inherit src;
       name = "lan-mouse-${version}-vendor";
-      hash = final.lib.fakeHash;
+      hash = "sha256-Lxs0qWvNAv4KCeJ+cDBYBzwlbJfQJshcxPRdg9w0szc=";
     };
+    # 0.11.0 switched to shadow-rs which requires build.rs to set OUT_DIR;
+    # the base package removes build.rs for 0.10.0's GIT_DESCRIBE approach.
+    prePatch = "";
   });
 }
