@@ -9,11 +9,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixgl = {
-      url = "github:nix-community/nixGL";
+      url = "path:./tools/nixgl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jetbrainsPlugins = {
       url = "github:theCapypara/nix-jetbrains-plugins";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    llmAgents = {
+      url = "github:numtide/llmagents";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -26,6 +30,7 @@
       flakeUtils,
       nixgl,
       jetbrainsPlugins,
+      llmAgents,
       ...
     }:
     flakeUtils.lib.eachDefaultSystem (
@@ -36,23 +41,9 @@
           inherit system;
           overlays = [
             (import ./nixpkgs/lan-mouse.nix)
+            nixgl.overlays.default
           ];
         };
-        nixglWrap =
-          nixgl: pkg:
-          pkgs.symlinkJoin {
-            name = "${pkg.pname or pkg.name}-nixgl";
-            paths = [ pkg ];
-            nativeBuildInputs = [ pkgs.makeWrapper ];
-            postBuild = ''
-              for bin in $out/bin/*; do
-                if [ -L "$bin" ]; then
-                  tgt=$(readlink -f "$bin"); rm "$bin"
-                  makeWrapper ${nixgl}/bin/nixGL "$bin" --add-flags "$tgt"
-                fi
-              done
-            '';
-          };
         importNix =
           dir: name:
           import (dir + "/${name}.nix") {
@@ -60,10 +51,10 @@
               pkgs
               system
               systemManager
-              nixgl
-              nixglWrap
               jetbrainsPlugins
+              llmAgents
               ;
+            inherit (pkgs) nixGLWrap;
           };
         systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
         systems = pkgs.lib.genAttrs systemNames (name: (importNix ./systems name).system);
