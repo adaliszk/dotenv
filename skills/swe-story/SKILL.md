@@ -4,41 +4,36 @@ description: Write or Refine a Software Ticket about a Feature and User-Story.
 name: swe-story
 ---
 
-USER provides short description of software feature: LOAD into CONTEXT.
-MAY include a reference to an existing ticket: LOAD reference into CONTEXT as SUPPLEMENTARY.
-TASK is to write the full-featured ticket description: SAVE after CONFIRMATION ONLY.
+# Execution
 
-RUN `/caveman ultra` for CONVERSATION ONLY.
-RUN `/ponytail ultra` for IMPLEMENTATION ONLY.
-LOAD `./wiki/ARCHITECTURE.md` for TECHNICAL OVERVIEW.
-LOAD `./wiki/decisions/*.md` for TECHNICAL CONSTRAINTS.
-
-USE professional business language WITH agile terminology and flow.
-AVOID complex sentences, em-dash, repeated needs and wants.
+1. LOAD `caveman` SKILL in `ultra` MODE (RUN `/caveman ultra`), AND
+   LOAD `ponytail` SKILL in `ultra` MODE (RUN `/ponytail ultra`)
+2. LOAD `./wiki/ARCHITECTURE.md` for TECHNICAL OVERVIEW, AND
+   LOAD `./AGENTS.md` for INSTRUCTIONS
+3. LOAD `./wiki/decisions/*.md` for TECHNICAL CONSTRAINTS, AND
+   LOOKUP `./wiki/patterns/*.md` to FIND APPLICABLE EXAMPLE
+4. PARSE OR ASK for USER input about the short description what the ticket should
+   contain with the direction provided.
+5. LOAD any reference links provided for additional context.
+6. ASK for the details WITHOUT assuming or choosing for the USER.
+7. WRITE the full-featured ticket description and SHOW to the USER,
+   AVOID complex sentences, em-dash, repeated needs and wants.
+8. REPEAT 4-8 until USER APPROVES.
+9. PRINT tokens used in the current Context.
 
 # Rendering
 
-Jira Cloud descriptions render wiki markup, NOT Confluence macros or HTML tags.
-USE ONLY the native-safe set:
-
-- `{panel:title=Title}...{panel}` for callouts (note, error, success, decision, card).
-- `{code}...{code}` for code or config blocks.
-- `{quote}...{quote}` for cited context or documentation excerpts.
-
-Colored macros (`{info}`, `{note}`, `{tip}`, `{warning}`, `{success}`, `{error}`) are
-NOT native: they need a marketplace app. DO NOT use unless CONFIRMED. Map intent to a
-titled `{panel}` instead. Mermaid does NOT render natively: OMIT unless CONFIRMED.
+Use `skill-macros` MCP with `format-to-<target>` tool to convert the custom DSL generated into the various target systems such as Jira, Confluence, GitHub, or AFFiNE. Use `supported-targets` tool to get which systems are available.
 
 # Placeholders
 
 Template placeholders use `[Variable]` square brackets. NEVER use `{Variable}`: the
-curly braces collide with Jira macro syntax and risk being parsed on push. Reserve `{}`
-strictly for actual Jira macros.
+curly braces collide with skill macro syntax and risk being parsed on push. Reserve `{}`
+strictly for actual skill macros.
 
-# Ticket Format
+# Ticket Outline
 
-Combines multiple header separated segments, with `---` lines for visual separation.
-Each segment is for a different audience and different stakeholder:
+Combines multiple header separated segments:
 
 - Use-Case: the "description" without header to lead the feature request.
 - Viability: for giving limitations, context, and architecture details.
