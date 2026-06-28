@@ -1,19 +1,23 @@
 # Context
 
 Personalized take on how to manage systems, configurations, and shared tooling using Nix and Stow.
+
 Decouples system profiles into re-usable flake packages for maximum modularity.
 Avoids derivation-based configuration to allow on-the-fly fine-tuning on each machine.
+
+# Prerequisites
+
+- LOAD `caveman` SKILL IN `ultra` MODE (RUN `/caveman ultra`)
+- LOAD `ponytail` SKILL IN `ultra` MODE (RUN `/ponytail ultra`)
 
 # Directory Structure
 
 - `./configs`: Configuration profiles with their Stow-able paths.
 - `./keyboards`: Sub-flake to build custom Keyboards.
-- `./nixpkgs`: Overlays to update some tools beyond "unstable".
+- `./nixpkgs`: Nix Overlays and Packages for custom hooks and updated builds.
 - `./profiles`: Flake profiles with separation by activity.
-- `./scripts`: Helper scripts for maintaining the repo.
 - `./skills`: Used skills that are loaded with Agentdev.
 - `./systems`: System configurations to easily swap purposes.
-- `./vendor`: Remote submodules to respect ownership over duplication.
 
 # Rules
 
