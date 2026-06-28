@@ -8,16 +8,12 @@
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "path:./tools/nixgl";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     jetbrainsPlugins = {
       url = "github:theCapypara/nix-jetbrains-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llmAgents = {
-      url = "github:numtide/llmagents";
+      url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -28,7 +24,6 @@
       nixpkgs,
       systemManager,
       flakeUtils,
-      nixgl,
       jetbrainsPlugins,
       llmAgents,
       ...
@@ -41,7 +36,6 @@
           inherit system;
           overlays = [
             (import ./nixpkgs/lan-mouse.nix)
-            nixgl.overlays.default
           ];
         };
         importNix =
@@ -54,7 +48,6 @@
               jetbrainsPlugins
               llmAgents
               ;
-            inherit (pkgs) nixGLWrap;
           };
         systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
         systems = pkgs.lib.genAttrs systemNames (name: (importNix ./systems name).system);
