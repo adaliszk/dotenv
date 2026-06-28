@@ -39,6 +39,11 @@ let
         [ -d "$ROOT/configs/$NAME" ] || continue
         stow --no-folding --defer="." -d "$ROOT/configs" -t "$HOME" -R "$NAME"
       done
+
+      echo "> Reload user services"
+      if command -v systemctl >/dev/null 2>&1; then
+        systemctl --user daemon-reload || true
+      fi
     '';
   };
 in
