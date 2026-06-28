@@ -26,7 +26,7 @@ let
 
       echo "> Checking $ROOT for $REPO state"
       if [ -d "$ROOT/.git" ]; then
-        git -C "$ROOT" pull --ff-only
+        git -C "$ROOT" pull --ff-only 
       else
         git clone "$REPO" "$ROOT"
       fi
