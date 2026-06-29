@@ -1,3 +1,96 @@
 {
-    instructions: ["~/.config/opencode/AGENTS.md"]
+    "$schema": "https://opencode.ai/config.json",
+    "instructions": ["~/.config/opencode/AGENTS.md"],
+    "compaction": { "auto": false },
+    "provider": {
+        "local": {
+            "name": "Localhost",
+            "npm": "@ai-sdk/openai-compatible",
+            "options": {
+                "baseURL": "http://localhost:11434/v1"
+            },
+            "models": {
+                "gemma4-12B-official:medium": {
+                    "name": "Gemma-4/12B [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "ornit1.0-9B:max": {
+                    "name": "Ornit-1.0/9B [MAX]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "ornit1.0-9B:high": {
+                    "name": "Ornit-1.0/9B [HIGH]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "ornit1.0-9B:medium": {
+                    "name": "Ornit-1.0/9B [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "ornit1.0-9B:low": {
+                    "name": "Ornit-1.0/9B [LOW]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v2:high": {
+                    "name": "Gemma-4/12B Fable v2 [HIGH]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v2:medium": {
+                    "name": "Gemma-4/12B Fable v2 [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v2:low": {
+                    "name": "Gemma-4/12B Fable v2 [LOW]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v1:max": {
+                    "name": "Gemma-4/12B Fable v1 [MAX]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v1:high": {
+                    "name": "Gemma-4/12B Fable v1 [HIGH]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v1:medium": {
+                    "name": "Gemma-4/12B Fable v1 [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "gemma4-12B-fable-v1:low": {
+                    "name": "Gemma-4/12B Fable v1 [LOW]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.6-14B-fable:max": {
+                    "name": "Qwen-3.6/14B Fable [MAX]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.6-14B-fable:high": {
+                    "name": "Qwen-3.6/14B Fable [HIGH]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.6-14B-fable:medium": {
+                    "name": "Qwen-3.6/14B Fable [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.6-14B-fable:low": {
+                    "name": "Qwen-3.6/14B Fable [LOW]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.5-9B-mythos:max": {
+                    "name": "Qwen-3.5/9B Mythos [MAX]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.5-9B-mythos:high": {
+                    "name": "Qwen-3.5/9B Mythos [HIGH]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.5-9B-mythos:medium": {
+                    "name": "Qwen-3.5/9B Mythos [MEDIUM]",
+                    "limit": { "context": 32768, "output": 16384 }
+                },
+                "qwen3.5-9B-mythos:low": {
+                    "name": "Qwen-3.5/9B Mythos [LOW]",
+                    "limit": { "context": 32768, "output": 16384 }
+                }
+            }
+        }
+    }
 }

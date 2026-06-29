@@ -61,7 +61,6 @@
         systemConfigs = systems;
         packages = profiles // {
           default = profiles.essentials;
-          lazyllama = pkgs.lazyllama;
         };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
