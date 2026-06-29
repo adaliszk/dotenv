@@ -9,7 +9,7 @@ flake packages that you can install or use.
 - Install Nix in Daemon Mode: https://nixos.org/download
 - Register the repository:
   ```bash
-  sudo nix registry add adaliszk github:adaliszk/system
+  nix registry add adaliszk github:adaliszk/system
   ```
 
 ## Setup
@@ -21,7 +21,7 @@ focused around running the kernel and absolutely necessary services.
 To kick off the global Nix configuration, run:
 
 ```bash
-sudo nix profile add adaliszk#essentials
+nix profile add adaliszk#essentials
 ```
 
 After these essentials are installed, you can use `system-manager` to switch between
@@ -37,7 +37,6 @@ Systems:
 
 - `adaliszk#root`: empty configuration that only configures Nix itself
 - `adaliszk#minimal`: minimum services and packages for protection and utilities
-- `adaliszk#k3s`: kubernetes node using Rancher's K3s with network-based configuration
 - `adaliszk#hyprland`: core system-level engine for using Hyprland desktop environment
 
 ## System Packages with GUI
@@ -85,7 +84,7 @@ After installed the intended profiles, run the config update for setting up the 
 home configurations:
 
 ```bash
-update-configs
+config-update
 ```
 
 This is also the command to be used for updating the system configs for updates.
