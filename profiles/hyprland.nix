@@ -13,6 +13,8 @@ pkgs.buildEnv {
     # hyprlauncher
     hyprpwcenter
     hyprcursor
+    slurp
+    grim
     ironbar
     foot
   ];
