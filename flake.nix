@@ -36,6 +36,7 @@
           inherit system;
           overlays = [
             (import ./nixpkgs/lan-mouse.nix)
+            (import ./nixpkgs/lazyllama.nix)
           ];
         };
         importNix =

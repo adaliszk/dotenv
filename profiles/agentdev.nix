@@ -3,7 +3,7 @@
 let
   ollama-system = pkgs.writeShellApplication {
     name = "ollama";
-     runtimeInputs = with pkgs; [
+    runtimeInputs = with pkgs; [
       ollama-rocm
       ollama-cpu
     ];
@@ -19,16 +19,10 @@ in
 pkgs.buildEnv {
   name = "agentdev";
   paths = with pkgs; [
-    opencode
-    opencode-claude-auth
-    opencode-desktop
     claude-code
     claude-monitor
     ollama-system
-    gollama
-    python315
-    python3Packages.huggingface-hub
-    python3Packages.hf-transfer
-    aria2
+    lazyllama
+    opencode
   ];
 }
