@@ -5,9 +5,12 @@ final: prev: {
 
     src = final.fetchCrate {
       inherit pname version;
-      hash = final.lib.fakeHash;
+      hash = "sha256-cXwcN3OeKI55tJJN7jUsoEDtUdMNwjqxA3Zt3F74/us=";
     };
 
-    cargoHash = final.lib.fakeHash;
+    cargoHash = "sha256-pdWgEAmjLYGw6AiFC7i7pUhdcdgLOtlMiYowbz5A4gs=";
+
+    nativeBuildInputs = [ final.pkg-config ];
+    buildInputs = [ final.openssl ];
   };
 }
