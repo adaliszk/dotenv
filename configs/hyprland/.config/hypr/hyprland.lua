@@ -36,6 +36,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprlauncher"))
 hl.bind(mainMod .. " + U", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + H", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + D", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 -- Move focus or windows in the workspace using arrows or VIM-motion
 local keys = { left = "H", right = "L", up = "K", down = "J" }
@@ -299,6 +300,12 @@ hl.window_rule({
 --   no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+
+hl.window_rule({
+  name = "censor-teams",
+  match = { class = "Microsoft Teams" },
+  no_screen_share = true,
+})
 
 -- Hyprland-run windowrule
 hl.window_rule({
