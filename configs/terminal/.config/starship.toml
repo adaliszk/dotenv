@@ -3,3 +3,6 @@ version_format = "${raw}"
 
 [aws]
 disabled = true
+
+[lua]
+disabled = true
