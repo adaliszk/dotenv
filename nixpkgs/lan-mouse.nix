@@ -20,8 +20,8 @@ final: prev: {
     buildFeatures = [
       "layer_shell_capture"
       "libei_capture"
-      "wlroots_emulation"
       "libei_emulation"
+      "wlroots_emulation"
       "rdp_emulation"
     ];
   });
