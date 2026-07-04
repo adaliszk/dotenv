@@ -19,8 +19,6 @@ in
 pkgs.buildEnv {
   name = "agentdev";
   paths = with pkgs; [
-    claude-code
-    claude-monitor
     ollama-system
     lazyllama
     opencode

@@ -1,9 +1,9 @@
 # Context
 
-Personalized take on how to manage systems, configurations, and shared tooling using Nix and Stow.
-
-Decouples system profiles into re-usable flake packages for maximum modularity.
-Avoids derivation-based configuration to allow on-the-fly fine-tuning on each machine.
+Personalized take on how to manage systems, configurations, and shared tooling 
+using Nix and Stow. Decouples system profiles into re-usable flake packages for 
+maximum modularity. Avoids derivation-based configuration to allow on-the-fly 
+fine-tuning on each machine.
 
 # Prerequisites
 
@@ -16,7 +16,7 @@ Avoids derivation-based configuration to allow on-the-fly fine-tuning on each ma
 - `./keyboards`: Sub-flake to build custom Keyboards.
 - `./nixpkgs`: Nix Overlays and Packages for custom hooks and updated builds.
 - `./profiles`: Flake profiles with separation by activity.
-- `./skills`: Used skills that are loaded with Agentdev.
+- `./skills`: Used skills that are loaded with AgentDev.
 - `./systems`: System configurations to easily swap purposes.
 
 # Rules
