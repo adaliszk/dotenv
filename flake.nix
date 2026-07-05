@@ -37,6 +37,7 @@
           overlays = [
             (import ./nixpkgs/lan-mouse.nix)
             (import ./nixpkgs/lazyllama.nix)
+            (import ./nixpkgs/codegraph.nix)
           ];
         };
         importNix =
@@ -61,6 +62,9 @@
         systemConfigs = systems;
         packages = profiles // {
           default = profiles.essentials;
+          lan-mouse = pkgs.lan-mouse;
+          lazyllama = pkgs.lazyllama;
+          codegraph = pkgs.codegraph;
         };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
