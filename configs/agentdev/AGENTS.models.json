@@ -1,0 +1,66 @@
+{
+    "llama": [
+        {
+            "huggingface": {
+                "repo": "unsloth/gemma-4-26B-A4B-it-GGUF",
+                "tag": "Q8_0",
+                "file": "gemma-4-26B-A4B-it.Q8_0.gguf"
+            },
+            "name": "gemma4-26B-A4B-atomic-chat-turbo-mtp-base"
+        },
+        {
+            "huggingface": {
+                "repo": "AtomicChat/gemma-4-26B-A4B-it-assistant-GGUF",
+                "tag": "Q8_0",
+                "file": "gemma-4-26B-A4B-it-assistant.Q8_0.gguf"
+            },
+            "name": "gemma4-26B-A4B-atomic-chat-turbo-mtp-assistant"
+        }
+    ],
+    "ollama": [
+        {
+            "huggingface": "unsloth/gemma-4-12B-it-qat-GGUF:Q8_0",
+            "name": "gemma-4-12B-unsloth-it-qat:Q8_0"
+        },
+        {
+            "huggingface": "unsloth/gemma-4-12B-it-qat-GGUF:Q4_0",
+            "name": "gemma-4-12B-unsloth-it-qat:Q4_0"
+        },
+        {
+            "huggingface": "deepreinforce-ai/Ornith-1.0-9B-GGUF:Q8_0",
+            "name": "ornith-1.0-9B-deepreinforce-mtp:Q8_0"
+        },
+        {
+            "huggingface": "deepreinforce-ai/Ornith-1.0-9B-GGUF:Q6_K",
+            "name": "ornith-1.0-9B-deepreinforce-mtp:Q6_K"
+        },
+        {
+            "huggingface": "deepreinforce-ai/Ornith-1.0-9B-GGUF:Q4_K_M",
+            "name": "ornith-1.0-9B-deepreinforce-mtp:Q4_K_M"
+        },
+        {
+            "huggingface": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF:Q8_0",
+            "name": "gemma-4-12B-yuxinlu1-fable-v2:Q8_0"
+        },
+        {
+            "huggingface": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF:Q6_K",
+            "name": "gemma-4-12B-yuxinlu1-fable-v2:Q6_K"
+        },
+        {
+            "huggingface": "yuxinlu1/gemma-4-12B-agentic-fable5-composer2.5-v2-3.5x-tau2-GGUF:Q3_K_M",
+            "name": "gemma-4-12B-yuxinlu1-fable-v2:Q3_K_M"
+        },
+        {
+            "huggingface": "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF:Q8_0",
+            "name": "qwen-3.6-14B-A3B-tvall43-fable:Q8_0"
+        },
+        {
+            "huggingface": "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF:Q6_K",
+            "name": "qwen-3.6-14B-A3B-tvall43-fable:Q6_K"
+        },
+        {
+            "huggingface": "tvall43/Qwen3.6-14B-A3B-FableVibes-GGUF:Q4_K_M",
+            "name": "qwen-3.6-14B-A3B-tvall43-fable:Q4_K_M"
+        }
+    ]
+}

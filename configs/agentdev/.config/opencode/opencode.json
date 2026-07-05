@@ -3,87 +3,68 @@
     "instructions": ["~/.config/opencode/AGENTS.md"],
     "compaction": { "auto": false },
     "provider": {
-        "local": {
-            "name": "Localhost",
+        "ollama": {
+            "name": "Ollama",
             "npm": "@ai-sdk/openai-compatible",
             "options": {
                 "baseURL": "http://localhost:11434/v1"
             },
             "models": {
-                "gemma4-12B-unsloth-it-qat:F16": {
-                    "name": "Gemma-4/9B MTP [Chat/MAX]",
-                    "limit": { "context": 65536, "output": 16384 }
-                },
-                "gemma4-12B-unsloth-it-qat:Q8_0": {
+                "gemma-4-12B-unsloth-it-qat:Q8_0": {
                     "name": "Gemma-4/9B MTP [Chat/HIGH]",
                     "limit": { "context": 65536, "output": 16384 }
                 },
-                "gemma4-12B-unsloth-it-qat:Q4_0": {
+                "gemma-4-12B-unsloth-it-qat:Q4_0": {
                     "name": "Gemma-4/9B MTP [Chat/LOW]",
                     "limit": { "context": 65536, "output": 16384 }
                 },
-                "ornit1.0-9B-deepreinforce-mtp:BF16": {
-                    "name": "Ornit-1.0/9B [Code/MAX]",
+                "ornith-1.0-9B-deepreinforce-mtp:Q8_0": {
+                    "name": "Ornith-1.0/9B [Agent/HIGH]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "ornit1.0-9B-deepreinforce-mtp:Q8_0": {
-                    "name": "Ornit-1.0/9B [Code/HIGH]",
+                "ornith-1.0-9B-deepreinforce-mtp:Q6_K": {
+                    "name": "Ornith-1.0/9B [Agent/MEDIUM]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "ornit1.0-9B-deepreinforce-mtp:Q6_K": {
-                    "name": "Ornit-1.0/9B [Code/MEDIUM]",
+                "ornith-1.0-9B-deepreinforce-mtp:Q4_K_M": {
+                    "name": "Ornith-1.0/9B [Agent/LOW]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "ornit1.0-9B-deepreinforce-mtp:Q4_K_M": {
-                    "name": "Ornit-1.0/9B [Code/LOW]",
-                    "limit": { "context": 2621440, "output": 65536 }
-                },
-                "gemma4-12B-yuxinlu1-fable-v2:F16": {
-                    "name": "Gemma-4/12B Fable [Agent/MAX]",
-                    "limit": { "context": 2621440, "output": 65536 }
-                },
-                "gemma4-12B-yuxinlu1-fable-v2:Q8_0": {
+                "gemma-4-12B-yuxinlu1-fable-v2:Q8_0": {
                     "name": "Gemma-4/12B Fable [Agent/HIGH]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "gemma4-12B-yuxinlu1-fable-v2:Q6_K": {
+                "gemma-4-12B-yuxinlu1-fable-v2:Q6_K": {
                     "name": "Gemma-4/12B Fable [Agent/MEDIUM]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "gemma4-12B-yuxinlu1-fable-v2:Q3_K_M": {
+                "gemma-4-12B-yuxinlu1-fable-v2:Q3_K_M": {
                     "name": "Gemma-4/12B Fable [Agent/LOW]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "qwen3.6-14B-A3B-tvall43-fable:F16": {
-                    "name": "Qwen-3.6/14B/3B Fable [Agent/MAX]",
-                    "limit": { "context": 2621440, "output": 65536 }
-                },
-                "qwen3.6-14B-A3B-tvall43-fable:Q8_0": {
+                "qwen-3.6-14B-A3B-tvall43-fable:Q8_0": {
                     "name": "Qwen-3.6/14B/3B Fable [Agent/HIGH]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "qwen3.6-14B-A3B-tvall43-fable:Q6_K": {
+                "qwen-3.6-14B-A3B-tvall43-fable:Q6_K": {
                     "name": "Qwen-3.6/14B/3B Fable [Agent/MEDIUM]",
                     "limit": { "context": 2621440, "output": 65536 }
                 },
-                "qwen3.6-14B-A3B-tvall43-fable:Q4_K_M": {
+                "qwen-3.6-14B-A3B-tvall43-fable:Q4_K_M": {
                     "name": "Qwen-3.6/14B/3B Fable [Agent/LOW]",
                     "limit": { "context": 2621440, "output": 65536 }
-                },
-                "gemma4-26B-A4B-atomic-chat-turbo-mtp:F16": {
-                    "name": "Gemma-4/26B/4B Turbo MTP [Code/MAX]",
-                    "limit": { "context": 32768, "output": 8192 }
-                },
-                "gemma4-26B-A4B-atomic-chat-turbo-mtp:F16": {
+                }
+            }
+        },
+        "llama-gemma4-turbo": {
+            "name": "Llama Gemma4 Turbo",
+            "npm": "@ai-sdk/openai-compatible",
+            "options": {
+                "baseURL": "http://localhost:11401/v1"
+            },
+            "models": {
+                "gemma4-26B-A4B-atomic-chat-turbo-mtp:Q8_0": {
                     "name": "Gemma-4/26B/4B Turbo MTP [Code/HIGH]",
-                    "limit": { "context": 32768, "output": 8192 }
-                },
-                "gemma4-26B-A4B-atomic-chat-turbo-mtp:F16": {
-                    "name": "Gemma-4/26B/4B Turbo MTP [Code/MAX]",
-                    "limit": { "context": 32768, "output": 8192 }
-                },
-                "gemma4-26B-A4B-atomic-chat-turbo-mtp:F16": {
-                    "name": "Gemma-4/26B/4B Turbo MTP [Code/LOW]",
                     "limit": { "context": 32768, "output": 8192 }
                 }
             }

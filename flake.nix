@@ -36,7 +36,9 @@
           inherit system;
           overlays = [
             (import ./nixpkgs/lan-mouse.nix)
-            (import ./nixpkgs/lazyllama.nix)
+            (import ./nixpkgs/llama-turboquant-cpu.nix)
+            (import ./nixpkgs/llama-turboquant-rocm.nix)
+            (import ./nixpkgs/llama-turboquant-cuda.nix)
             (import ./nixpkgs/codegraph.nix)
           ];
         };
@@ -63,6 +65,9 @@
         packages = profiles // {
           default = profiles.essentials;
           lan-mouse = pkgs.lan-mouse;
+          llama-turboquant-cpu = pkgs.llama-turboquant-cpu;
+          llama-turboquant-rocm = pkgs.llama-turboquant-rocm;
+          llama-turboquant-cuda = pkgs.llama-turboquant-cuda;
           lazyllama = pkgs.lazyllama;
           codegraph = pkgs.codegraph;
         };

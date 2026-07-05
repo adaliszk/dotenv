@@ -1,0 +1,19 @@
+[Unit]
+Description=TurboQuant Gemma4 Server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=%h/.nix-profile/bin/llama-turboquant-server \
+  -m %h/.local/share/llama/gemma4-26B-A4B-atomic-chat-turbo-mtp-base.gguf \
+  --mtp-head %h/.local/share/llama/gemma4-26B-A4B-atomic-chat-turbo-mtp:Q8_0.gguf \
+  --spec-type mtp \
+  --draft-block-size 3 --draft-max 8 --draft-min 0 \
+  -ngl 99 -ngld 99 -ctk turbo3 -ctv turbo3 \
+  -ctkd turbo3 -ctvd turbo3 \
+  -fa on -c 16384 --host 127.0.0.1 --port 11401
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
