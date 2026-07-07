@@ -1,13 +1,59 @@
 {
   "nodes": {
+    "agentSkills": {
+      "inputs": {
+        "home-manager": "home-manager",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783255035,
+        "narHash": "sha256-csxkmV7a0zdhWi24Bz23/GQi1zOimCNTDFyS/ezm7sw=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "46337bfdd6ccfcc08766c933a02fff3338ffe30f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
+    "agentTools": {
+      "inputs": {
+        "blueprint": "blueprint",
+        "bun2nix": "bun2nix",
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems",
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1783395428,
+        "narHash": "sha256-x+xf38Bg14aL+kbcFJAqs1dvuxMifb79axmzl4kEF9g=",
+        "owner": "numtide",
+        "repo": "llm-agents.nix",
+        "rev": "e93955c24dff143c67d3a2e771baac1a4118f5a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "llm-agents.nix",
+        "type": "github"
+      }
+    },
     "blueprint": {
       "inputs": {
         "nixpkgs": [
-          "llmAgents",
+          "agentTools",
           "nixpkgs"
         ],
         "systems": [
-          "llmAgents",
+          "agentTools",
           "systems"
         ]
       },
@@ -28,19 +74,19 @@
     "bun2nix": {
       "inputs": {
         "flake-parts": [
-          "llmAgents",
+          "agentTools",
           "flake-parts"
         ],
         "nixpkgs": [
-          "llmAgents",
+          "agentTools",
           "nixpkgs"
         ],
         "systems": [
-          "llmAgents",
+          "agentTools",
           "systems"
         ],
         "treefmt-nix": [
-          "llmAgents",
+          "agentTools",
           "treefmt-nix"
         ]
       },
@@ -93,7 +139,7 @@
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
-          "llmAgents",
+          "agentTools",
           "nixpkgs"
         ]
       },
@@ -135,7 +181,7 @@
     },
     "flakeUtils": {
       "inputs": {
-        "systems": "systems"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -174,13 +220,54 @@
         "type": "github"
       }
     },
+    "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "agentSkills",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1782702263,
+        "narHash": "sha256-8/MG4Su7PhnynrmsVO61IeAfrK7GuUEu+E+gwbhy1QQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "789a35fbdeb3c46b260096daa0b321c11be527ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "homeManager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783388784,
+        "narHash": "sha256-w+YU5vatysjLZIg1wOKSzo/RL9Z66eBQuIjVnBM/1Zg=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "63d02d1c19f1c2b47a5bc7e55c620b6af7b218a6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "jetbrainsPlugins": {
       "inputs": {
         "flake-compat": "flake-compat",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1783172531,
@@ -196,38 +283,13 @@
         "type": "github"
       }
     },
-    "llmAgents": {
-      "inputs": {
-        "blueprint": "blueprint",
-        "bun2nix": "bun2nix",
-        "flake-parts": "flake-parts",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": "systems_3",
-        "treefmt-nix": "treefmt-nix"
-      },
-      "locked": {
-        "lastModified": 1783204536,
-        "narHash": "sha256-jSkmEbpwO4k4Fvze+LqFBfnzv0aYFe/0oU+Ti51yM50=",
-        "owner": "numtide",
-        "repo": "llm-agents.nix",
-        "rev": "562705d7fd8c2421ac3225957b7405570d46dc9d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "llm-agents.nix",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1782959384,
-        "narHash": "sha256-xnJJk+ct+D2+wdRxj1wk36w5zV9RVESwRqcklPdt3fM=",
+        "lastModified": 1783224372,
+        "narHash": "sha256-8i/87eeoqiGE4yOTjwSA3Eh/ziJRQEmd/unYU+K27sk=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "65179426c83bb3f6bc14898b42ea1c6f01d374b0",
+        "rev": "d407951447dcd00442e97087bf374aad70c04cea",
         "type": "github"
       },
       "original": {
@@ -267,9 +329,11 @@
     },
     "root": {
       "inputs": {
+        "agentSkills": "agentSkills",
+        "agentTools": "agentTools",
         "flakeUtils": "flakeUtils",
+        "homeManager": "homeManager",
         "jetbrainsPlugins": "jetbrainsPlugins",
-        "llmAgents": "llmAgents",
         "nixpkgs": "nixpkgs",
         "systemManager": "systemManager"
       }
@@ -359,7 +423,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "llmAgents",
+          "agentTools",
           "nixpkgs"
         ]
       },

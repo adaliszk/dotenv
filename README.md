@@ -84,7 +84,7 @@ After installed the intended profiles, run the config update for setting up the 
 home configurations:
 
 ```bash
-config-update
+system-update
 ```
 
 This is also the command to be used for updating the system configs for updates.

@@ -10,7 +10,7 @@ final: prev: {
       hash = "sha256-iq2hBYOC8utpSqvBIbfNNYwth6bITfGBnGEEVt4HloY=";
     };
 
-    propagatedUserEnvPkgs =  with final; [ surrealdb ];
+    propagatedUserEnvPkgs = with final; [ surrealdb ];
     nativeBuildInputs = with final; [ pkg-config ];
     buildInputs = with final; [ openssl ];
 

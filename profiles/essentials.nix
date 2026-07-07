@@ -2,6 +2,7 @@
   pkgs,
   systemManager,
   system,
+  homeManager,
   ...
 }:
 
@@ -11,8 +12,8 @@ let
     runtimeInputs = [ systemManager.packages.${system}.default ];
     text = ''system-manager switch --sudo --flake "$@"'';
   };
-  configUpdate = pkgs.writeShellApplication {
-    name = "config-update";
+  systemUpdate = pkgs.writeShellApplication {
+    name = "system-update";
     runtimeInputs = with pkgs; [
       git
       nix
@@ -46,13 +47,19 @@ let
       fi
     '';
   };
+  homeSwitch = pkgs.writeShellApplication {
+    name = "home-switch";
+    runtimeInputs = [ homeManager.packages.${system}.default ];
+    text = ''home-manager switch --impure --flake "$@"'';
+  };
 in
 pkgs.buildEnv {
   name = "essentials";
   paths = with pkgs; [
     systemManager.packages.${system}.default
     systemSwitch
-    configUpdate
+    systemUpdate
+    homeSwitch
     proto
   ];
 }

@@ -8,12 +8,20 @@
       url = "github:numtide/system-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    homeManager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     jetbrainsPlugins = {
       url = "github:theCapypara/nix-jetbrains-plugins";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    llmAgents = {
+    agentTools = {
       url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    agentSkills = {
+      url = "github:Kyure-A/agent-skills-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -23,9 +31,11 @@
       self,
       nixpkgs,
       systemManager,
+      homeManager,
       flakeUtils,
       jetbrainsPlugins,
-      llmAgents,
+      agentSkills,
+      agentTools,
       ...
     }:
     flakeUtils.lib.eachDefaultSystem (
@@ -49,8 +59,10 @@
               pkgs
               system
               systemManager
+              homeManager
               jetbrainsPlugins
-              llmAgents
+              agentSkills
+              agentTools
               ;
           };
         systemNames = map (pkgs.lib.removeSuffix ".nix") (builtins.attrNames (builtins.readDir ./systems));
@@ -68,7 +80,6 @@
           llama-turboquant-cpu = pkgs.llama-turboquant-cpu;
           llama-turboquant-rocm = pkgs.llama-turboquant-rocm;
           llama-turboquant-cuda = pkgs.llama-turboquant-cuda;
-          lazyllama = pkgs.lazyllama;
           codegraph = pkgs.codegraph;
         };
         devShells.default = pkgs.mkShell {
